@@ -1,9 +1,10 @@
-export default function AllNotes() {
+export default function Archive() {
   return (
-    <main>
-      <h1 className="page-header">All Notes</h1>
+    <div className="archive-container">
+      <h1 className="page-header">Archived Notes</h1>
+      <p className="page-description">All your archived notes are stored here. You can restore or delete them anytime.</p>
       <ul className="notes-list">
-        <li onClick={() => location.hash = '/note/1'}>
+        <li onClick={() => (location.hash = "/note/1")}>
           <h3>React Performance Optimization</h3>
           <div className="note-tags">
             <span className="note-tag">Dev</span>
@@ -30,6 +31,6 @@ export default function AllNotes() {
           <span className="note-date">29 Oct 2024</span>
         </li>
       </ul>
-    </main>
+    </div>
   );
 }

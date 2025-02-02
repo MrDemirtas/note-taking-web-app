@@ -1,7 +1,14 @@
-export default function AllNotes() {
+import { BackArrowSvg } from "../Svg";
+
+export default function TagDetails(params) {
   return (
-    <main>
-      <h1 className="page-header">All Notes</h1>
+    <div className="tag-details-container">
+      <button className="backBtn" onClick={() => (location.hash = "/tags")}>
+        <BackArrowSvg />
+        Go Back
+      </button>
+      <h1 className="tag-title"><span>Notes Tagged:</span> Dev</h1>
+      <p className="page-description">All notes with the ”Dev” tag are shown here.</p>
       <ul className="notes-list">
         <li onClick={() => location.hash = '/note/1'}>
           <h3>React Performance Optimization</h3>
@@ -30,6 +37,6 @@ export default function AllNotes() {
           <span className="note-date">29 Oct 2024</span>
         </li>
       </ul>
-    </main>
+    </div>
   );
 }
