@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body {
+  font-family: "Inter", system-ui;
+  background-color: #f3f5f8;
+}
+
+.container {
+  background-color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  min-height: 90vh;
+}
+
+header {
+  h1 {
+    font-family: "Pacifico", system-ui;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 40.39px;
+    letter-spacing: -0.02em;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 16px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0e121b;
+}
+
+main {
+  padding-inline: 16px;
+  h2 {
+    font-size: 24px;
+    line-height: 28.8px;
+    letter-spacing: -0.5px;
+    padding-block: 16px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 4px;
+    li {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 19.2px;
+        letter-spacing: -0.30000001192092896px;
+      }
+    }
+  }
+}
+
+hr {
+  border: 1px solid #e0e4ea;
+}
+
+.note-tags {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  span {
+    padding: 2px 6px;
+    background-color: #e0e4ea;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 14.4px;
+    letter-spacing: -0.20000000298023224px;
+  }
+}
+
+.note-date {
+  font-size: 12px;
+  line-height: 14.4px;
+  letter-spacing: -0.20000000298023224px;
+  color: #2b303b;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  background-color: #fff;
+  border-top: 1px solid #e0e4ea;
+  box-shadow: 0px -4px 6px 0px #f0f0f099;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    li {
+      padding-block: 4px;
+      text-align: center;
+      border-radius: 4px;
+      svg {
+        margin-inline: auto;
+      }
+    }
+    li.active {
+      background-color: #ebf1ff;
+      svg {
+        fill: #335cff;
+      }
+    }
+  }
+}
+
+.note-container {
+  padding-inline: 16px;
+  textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.20000000298023224px;
+    color: #232530;
+    &:focus {
+      border: 1px solid #335cff;
+    }
+  }
+}
+
+.note-header {
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.20000000298023224px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.note-header-interactions {
+  display: flex;
+  gap: 16px;
+  button {
+    padding: 0;
+  }
+}
+
+.note-cancelBtn,
+.note-saveBtn {
+  font-size: 14px;
+  line-height: 18.2px;
+  letter-spacing: -0.20000000298023224px;
+}
+
+.note-cancelBtn {
+  color: #525866;
+}
+
+.note-saveBtn {
+  color: #335cff;
+}
+
+.note-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 12px;
+  h1 {
+    font-size: 24px;
+    line-height: 28.8px;
+    letter-spacing: -0.5px;
+    color: #0e121b;
+  }
+  table {
+    color: #2b303b;
+    font-size: 12px;
+    line-height: 14.4px;
+    letter-spacing: -0.20000000298023224px;
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    td {
+      padding-block: 4px;
+      &:first-child {
+        width: 35%;
+      }
+    }
+  }
+}
