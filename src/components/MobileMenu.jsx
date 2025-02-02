@@ -1,4 +1,4 @@
-import { ArchiveSvg, HomeSvg, SearchSvg, TagsSvg } from "../Svg";
+import { ArchiveSvg, HomeSvg, SearchSvg, SettingsSvg, TagsSvg } from "../Svg";
 
 import { ScreenSize } from "../App";
 import { useContext } from "react";
@@ -36,7 +36,7 @@ export default function MobileMenu() {
         </li>
         <li className={route === "settings" ? "active" : ""}>
           <a href="#/settings">
-            <SearchSvg />
+            <SettingsSvg />
             {screenSize > 768 && <span>Settings</span>}
           </a>
         </li>

@@ -1,7 +1,10 @@
 import AllNotes from "./components/AllNotes";
 import Archive from "./components/Archive";
+import ColorTheme from "./components/ColorTheme";
+import FontTheme from "./components/FontTheme";
 import Note from "./components/Note";
 import Search from "./components/Search";
+import Settings from "./components/Settings";
 import TagDetails from "./components/TagDetails";
 import Tags from "./components/Tags";
 
@@ -29,6 +32,18 @@ const routers = [
   {
     url: "/search",
     component: <Search />,
+  },
+  {
+    url: "/settings",
+    component: <Settings />,
+  },
+  {
+    url: "/color-theme",
+    component: <ColorTheme />,
+  },
+  {
+    url: "/font-theme",
+    component: <FontTheme />,
   },
 ];
 

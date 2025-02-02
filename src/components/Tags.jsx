@@ -3,7 +3,7 @@ import { TagsSvg } from "../Svg";
 export default function Tags() {
   return (
     <div className="tags-container">
-      <h1>Tags</h1>
+      <h1 className="page-header">Tags</h1>
       <div className="tags-list">
         {Array.from({ length: 10 }).map((_, index) => (
           <Tag key={index} />
