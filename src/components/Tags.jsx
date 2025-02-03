@@ -1,4 +1,4 @@
-import { TagsSvg } from "../Svg";
+import { AddSvg, TagsSvg } from "../Svg";
 
 export default function Tags() {
   return (
@@ -9,6 +9,9 @@ export default function Tags() {
           <Tag key={index} />
         ))}
       </div>
+      <button className="add-note-btn" onClick={() => (location.hash = "/new-note")}>
+        <AddSvg />
+      </button>
     </div>
   );
 }
@@ -16,7 +19,7 @@ export default function Tags() {
 function Tag() {
   return (
     <>
-      <div className="tag" onClick={() => location.hash = "/tag-details"}>
+      <div className="tag" onClick={() => (location.hash = "/tag-details")}>
         <TagsSvg />
         <p>HTML</p>
       </div>

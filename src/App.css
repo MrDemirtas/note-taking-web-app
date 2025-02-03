@@ -117,23 +117,10 @@ nav {
 
 .note-container {
   padding-inline: 16px;
-  textarea {
-    width: 100%;
-    outline: none;
-    border: none;
-    resize: none;
-    font-size: 14px;
-    line-height: 18.2px;
-    letter-spacing: -0.20000000298023224px;
-    color: #232530;
-    &:focus {
-      border: 1px solid #335cff;
-    }
-  }
 }
 
-.note-header {
-  padding-block: 20px;
+.note-header,
+.new-note-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -154,7 +141,8 @@ nav {
   }
 }
 
-.note-header-interactions {
+.note-header-interactions,
+.new-note-interactions {
   display: flex;
   gap: 16px;
   button {
@@ -181,30 +169,51 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-block: 12px;
   h1 {
     font-size: 24px;
     line-height: 28.8px;
     letter-spacing: -0.5px;
   }
-  table {
-    color: #2b303b;
-    font-size: 12px;
-    line-height: 14.4px;
-    letter-spacing: -0.20000000298023224px;
-    label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      svg {
-        width: 16px;
-        height: 16px;
-      }
+}
+
+.note-metadata-table {
+  color: #2b303b;
+  font-size: 12px;
+  line-height: 14.4px;
+  letter-spacing: -0.20000000298023224px;
+  width: 100%;
+  label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    svg {
+      width: 16px;
+      height: 16px;
     }
-    td {
-      padding-block: 4px;
-      &:first-child {
-        width: 35%;
+  }
+  td {
+    padding-block: 4px;
+    &:first-child {
+      width: 35%;
+    }
+    input,
+    textarea {
+      width: 100%;
+      resize: none;
+      outline: none;
+      border: 1px solid #cacfd8;
+      font-size: 12px;
+      border-radius: 4px;
+      line-height: 14.4px;
+      letter-spacing: -0.20000000298023224px;
+      color: #2b303b;
+      &:focus {
+        border: 1px solid #0e121b;
+      }
+      &:disabled {
+        background-color: transparent;
+        border: none;
+        color: #99a0ae;
       }
     }
   }
@@ -395,4 +404,77 @@ nav {
   margin-top: 20px;
   display: flex;
   margin-left: auto;
+}
+
+.add-note-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #335cff;
+  border: none;
+  svg {
+    width: 32px;
+    height: 32px;
+    margin-inline: auto;
+  }
+}
+
+.note-title {
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.30000001192092896px;
+  color: #0e121b;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding-block: 8px;
+  &:focus {
+    border: 1px solid #0e121b;
+  }
+}
+
+.new-note-container,
+.note-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.note-textarea {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18.2px;
+  letter-spacing: -0.20000000298023224px;
+  color: #232530;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  &:focus {
+    border: 1px solid #0e121b;
+  }
+}
+
+.emptyState {
+  padding: 8px;
+  color: #0e121b;
+  background-color: #f3f5f8;
+  border: 1px solid #e0e4ea;
+  font-size: 14px;
+  line-height: 18.2px;
+  letter-spacing: -0.20000000298023224px;
+  border-radius: 8px;
+  a {
+    color: inherit;
+  }
 }

@@ -2,6 +2,7 @@ import AllNotes from "./components/AllNotes";
 import Archive from "./components/Archive";
 import ColorTheme from "./components/ColorTheme";
 import FontTheme from "./components/FontTheme";
+import NewNote from "./components/NewNote";
 import Note from "./components/Note";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
@@ -44,6 +45,10 @@ const routers = [
   {
     url: "/font-theme",
     component: <FontTheme />,
+  },
+  {
+    url: "/new-note",
+    component: <NewNote />,
   },
 ];
 
