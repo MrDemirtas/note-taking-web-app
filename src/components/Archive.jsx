@@ -34,6 +34,8 @@ function Note() {
 
 function EmptyState() {
   return (
-    <p className="emptyState">No notes have been archived yet. Move notes here for safekeeping, or <a href="#/new-note">create a new note.</a></p>
+    <p className="emptyState">
+      No notes have been archived yet. Move notes here for safekeeping, or <a href="#/new-note">create a new note.</a>
+    </p>
   );
 }

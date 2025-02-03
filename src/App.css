@@ -11,7 +11,7 @@ body {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   min-height: 90vh;
-  padding: 16px 20px;
+  padding: 20px 16px 60px 16px;
 }
 
 header {
@@ -477,4 +477,82 @@ nav {
   a {
     color: inherit;
   }
+}
+
+.not-found {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+dialog {
+  border-radius: 12px;
+  border: 1px solid #e0e4ea;
+  margin: auto;
+  padding: 0;
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.dialog-contents {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  align-items: start;
+  figure {
+    padding: 8px;
+    background-color: #f3f5f8;
+    border-radius: 8px;
+  }
+}
+
+.dialog-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.dialog-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.2px;
+    letter-spacing: -0.30000001192092896px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.20000000298023224px;
+    color: #2b303b;
+  }
+}
+
+.cancelBtn, .deleteBtn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  letter-spacing: -0.20000000298023224px;  
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background-color: #F3F5F8;
+  color: #525866;
+}
+
+.deleteBtn {
+  background-color: #FB3748;
+  color: #fff;
 }

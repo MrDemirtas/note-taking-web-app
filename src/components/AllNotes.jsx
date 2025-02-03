@@ -1,12 +1,19 @@
 import { AddSvg } from "../Svg";
+import { NoteData } from "../App";
+import { useContext } from "react";
 
 export default function AllNotes() {
+  const { noteData } = useContext(NoteData);
   return (
     <main>
       <h1 className="page-header">All Notes</h1>
       <ul className="notes-list">
-        {/* {Array.from({ length: 5 }).map((_, i) => ( <Note key={i} /> ))} */}
-        <EmptyState />
+        {noteData.length > 0 ? noteData.map((note) => (
+          <Note key={note.id} {...note} />
+        ))
+        :
+          <EmptyState />
+        }
       </ul>
       <button className="add-note-btn" onClick={() => (location.hash = "/new-note")}>
         <AddSvg />
@@ -15,16 +22,17 @@ export default function AllNotes() {
   );
 }
 
-function Note() {
+function Note({id, title, tags, lastEdited }) {
   return (
     <>
-      <li onClick={() => (location.hash = "/note/1")}>
-        <h3>React Performance Optimization</h3>
+      <li onClick={() => (location.hash = `/note/${id}`)}>
+        <h3>{title}</h3>
         <div className="note-tags">
-          <span className="note-tag">Dev</span>
-          <span className="note-tag">React</span>
+          {tags.map((tag) => (
+            <span className="note-tag" key={tag}>{tag}</span>
+          ))}
         </div>
-        <span className="note-date">29 Oct 2024</span>
+        <span className="note-date">{lastEdited}</span>
       </li>
       <hr />
     </>

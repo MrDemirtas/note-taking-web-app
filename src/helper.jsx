@@ -3,6 +3,7 @@ import Archive from "./components/Archive";
 import ColorTheme from "./components/ColorTheme";
 import FontTheme from "./components/FontTheme";
 import NewNote from "./components/NewNote";
+import NotFound from "./components/NotFound";
 import Note from "./components/Note";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
@@ -53,5 +54,5 @@ const routers = [
 ];
 
 export function getPage(url) {
-  return routers.findLast((router) => "/" + (url.split("/")?.[1] || "") === router.url)?.component || <h4>Not Found</h4>;
+  return routers.findLast((router) => "/" + (url.split("/")?.[1] || "") === router.url).component || <NotFound />;
 }
