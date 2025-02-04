@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
+import DesktopMenu from "./components/DesktopMenu";
 import Header from "./components/Header";
 import MobileMenu from "./components/MobileMenu";
 import { ToastContainer } from "react-toastify";
@@ -69,30 +70,30 @@ export default function App() {
 
   return (
     <Router.Provider value={router}>
-      <Header />
+      {screenSize < 1440 && <Header />}
       <div className="container" style={{ fontFamily }}>
         <NoteData.Provider value={{ noteData, setNoteData }}>
           <ScreenSize.Provider value={screenSize}>
             <FontFamily.Provider value={{fontFamily, setFontFamily}}>
+              {screenSize >= 1440 ? <DesktopMenu /> : <MobileMenu />}
               {getPage(router)}
-              <MobileMenu />
             </FontFamily.Provider>
           </ScreenSize.Provider>
         </NoteData.Provider>
-        <ToastContainer 
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          limit={5}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        limit={5}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Router.Provider>
   );
 }

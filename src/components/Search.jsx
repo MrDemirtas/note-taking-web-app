@@ -9,13 +9,13 @@ export default function Search() {
   const [filterData, setFilterData] = useState([...noteData]);
 
   useEffect(() => {
-    setFilterData(noteData.filter((note) => note.title.toLowerCase().includes(text) || note.note.toLowerCase().includes(text) || note.tags.map((tag) => tag.toLowerCase().includes(text)).includes(true)));
+    setFilterData(noteData.filter((note) => note.title.toLowerCase().includes(text.toLowerCase()) || note.note.toLowerCase().includes(text.toLowerCase()) || note.tags.map((tag) => tag.toLowerCase().includes(text.toLowerCase())).includes(true)));
   }, [text]);
 
   return (
     <div className="search-container">
       <h1 className="page-header">Search</h1>
-      <input type="text" placeholder="Search..." value={text} onChange={(e) => setText(e.target.value.toLowerCase())} />
+      <input type="text" placeholder="Search..." value={text} onChange={(e) => setText(e.target.value)} />
       <p className="page-description">All notes matching ”Dev” are displayed below.</p>
       <ul className="notes-list">
         {filterData.length > 0 ? 
