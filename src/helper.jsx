@@ -54,5 +54,5 @@ const routers = [
 ];
 
 export function getPage(url) {
-  return routers.findLast((router) => "/" + (url.split("/")?.[1] || "") === router.url).component || <NotFound />;
+  return routers.findLast((router) => "/" + (url.split("/")?.[1] || "") === router.url)?.component || <NotFound />;
 }

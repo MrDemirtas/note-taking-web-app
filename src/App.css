@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 body {
-  font-family: "Inter", system-ui;
   background-color: #f3f5f8;
 }
 
@@ -42,7 +41,7 @@ h6 {
   padding: 0;
   display: grid;
   align-items: start;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 4px;
   margin-top: 16px;
   li {
@@ -50,6 +49,11 @@ h6 {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    &:hover {
+      background-color: #f3f5f8;
+    }
     h3 {
       font-size: 16px;
       font-weight: 600;
@@ -232,9 +236,13 @@ nav {
   align-items: center;
   gap: 8px;
   padding-block: 10px;
+  cursor: pointer;
   svg {
     width: 20px;
     height: 20px;
+  }
+  &:hover {
+    background-color: #f3f5f8;
   }
 }
 
@@ -253,10 +261,9 @@ nav {
     width: 18px;
     height: 18px;
   }
-}
-
-.tag-details-container {
-  padding: 20px 16px;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .tag-title {
@@ -307,6 +314,9 @@ nav {
     display: grid;
     gap: 8px;
     li {
+      &:hover {
+        background-color: #f3f5f8;
+      }
       a {
         padding-block: 8px;
         display: flex;
@@ -346,6 +356,7 @@ nav {
     gap: 16px;
     padding: 16px;
     border: 1px solid #e0e4ea;
+    cursor: pointer;
     input {
       margin-left: auto;
     }
@@ -359,6 +370,9 @@ nav {
         width: 24px;
         height: 24px;
       }
+    }
+    &:hover {
+      background-color: #f3f5f8;
     }
   }
   label:has(input:checked) {
@@ -404,6 +418,9 @@ nav {
   margin-top: 20px;
   display: flex;
   margin-left: auto;
+  &:hover {
+    background-color: #1e3a8a;
+  }
 }
 
 .add-note-btn {
@@ -460,6 +477,7 @@ nav {
   outline: none;
   border: 1px solid transparent;
   border-radius: 8px;
+  resize: none;
   &:focus {
     border: 1px solid #0e121b;
   }
@@ -493,6 +511,7 @@ dialog {
   border: 1px solid #e0e4ea;
   margin: auto;
   padding: 0;
+  width: 343px;
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -536,23 +555,38 @@ dialog {
   }
 }
 
-.cancelBtn, .deleteBtn {
+.cancelBtn,
+.deleteBtn,
+.archiveBtn {
   padding: 12px 16px;
   border: none;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   line-height: 16.8px;
-  letter-spacing: -0.20000000298023224px;  
-  cursor: pointer;
+  letter-spacing: -0.20000000298023224px;
 }
 
 .cancelBtn {
-  background-color: #F3F5F8;
+  background-color: #f3f5f8;
   color: #525866;
 }
 
 .deleteBtn {
-  background-color: #FB3748;
+  background-color: #fb3748;
   color: #fff;
+}
+
+.archiveBtn {
+  background-color: #335cff;
+  color: #fff;
+}
+
+.Toastify__toast-container {
+  gap: 8px;
+  bottom: 60px;
+}
+
+button {
+  cursor: pointer;
 }

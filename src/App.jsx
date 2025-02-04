@@ -2,11 +2,12 @@ import { createContext, useEffect, useState } from "react";
 
 import Header from "./components/Header";
 import MobileMenu from "./components/MobileMenu";
+import { ToastContainer } from "react-toastify";
 import { getPage } from "./helper";
 
 const defaultData = [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     title: "My first note",
     tags: ["Dev", "React", "TypeScript"],
     isArchived: true,
@@ -14,7 +15,7 @@ const defaultData = [
     note: "Lorem ipsum dolor sit amet",
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     title: "Frontend Tips",
     tags: ["JavaScript", "CSS", "Next.js"],
     isArchived: false,
@@ -22,7 +23,7 @@ const defaultData = [
     note: "Always use semantic HTML for better accessibility.",
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     title: "Backend Basics",
     tags: ["Node.js", "Express", "API"],
     isArchived: false,
@@ -30,7 +31,7 @@ const defaultData = [
     note: "Middleware functions are essential for handling requests.",
   },
   {
-    id: 4,
+    id: crypto.randomUUID(),
     title: "State Management",
     tags: ["React", "Redux", "Zustand"],
     isArchived: true,
@@ -38,7 +39,7 @@ const defaultData = [
     note: "Use Zustand for lightweight state management in React.",
   },
   {
-    id: 5,
+    id: crypto.randomUUID(),
     title: "Performance Optimization",
     tags: ["Web", "Optimization", "Lighthouse"],
     isArchived: false,
@@ -50,10 +51,13 @@ const defaultData = [
 export const NoteData = createContext(null);
 export const ScreenSize = createContext(null);
 export const Router = createContext(null);
+export const FontFamily = createContext(null);
 export default function App() {
   const [router, setRouter] = useState(location.hash.substring(1) || "/");
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [noteData, setNoteData] = useState(localStorage.noteData ? JSON.parse(localStorage.noteData) : [...defaultData]);
+  const [fontFamily, setFontFamily] = useState("Inter");
+
   useEffect(() => {
     window.addEventListener("hashchange", () => {
       setRouter(location.hash.substring(1));
@@ -66,13 +70,28 @@ export default function App() {
   return (
     <Router.Provider value={router}>
       <Header />
-      <div className="container">
+      <div className="container" style={{ fontFamily }}>
         <NoteData.Provider value={{ noteData, setNoteData }}>
           <ScreenSize.Provider value={screenSize}>
-            {getPage(router)}
-            <MobileMenu />
+            <FontFamily.Provider value={{fontFamily, setFontFamily}}>
+              {getPage(router)}
+              <MobileMenu />
+            </FontFamily.Provider>
           </ScreenSize.Provider>
         </NoteData.Provider>
+        <ToastContainer 
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          limit={5}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     </Router.Provider>
   );
