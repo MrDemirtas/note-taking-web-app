@@ -34,26 +34,32 @@ function SettingsMobile() {
 
 function SettingsDesktop() {
   const [selectedPage, setSelectedPage] = useState(<ColorTheme />);
+  const [pageName, setPageName] = useState("ColorTheme");
 
+  function handleChangePage(component, pageName) {
+    setSelectedPage(component);
+    setPageName(pageName);
+  }
+  
   return (
     <div className="settings-container-desktop">
       <DesktopHeader title="Settings" isSettings />
       <div className="settings-desktop-contents">
         <div className="settings-left-menu">
           <ul>
-            <li className={selectedPage.type.name === "ColorTheme" ? "active" : ""} onClick={() => setSelectedPage(<ColorTheme />)}>
+            <li className={pageName === "ColorTheme" ? "active" : ""} onClick={() => handleChangePage(<ColorTheme />, "ColorTheme")}>
               <div>
                 <SunSvg />
                 Color Theme
               </div>
-              {selectedPage.type.name === "ColorTheme" && <RightArrow />}
+              {pageName === "ColorTheme" && <RightArrow />}
             </li>
-            <li className={selectedPage.type.name === "FontTheme" ? "active" : ""} onClick={() => setSelectedPage(<FontTheme />)}>
+            <li className={pageName === "FontTheme" ? "active" : ""} onClick={() => handleChangePage(<FontTheme />, "FontTheme")}>
               <div>
                 <TextFieldsSvg />
                 Font Theme
               </div>
-              {selectedPage.type.name === "FontTheme" && <RightArrow />}
+              {pageName === "FontTheme" && <RightArrow />}
             </li>
           </ul>
         </div>
