@@ -15,7 +15,9 @@ export default function Tags() {
       .map((note) => note.tags.map((tag) => tag))
       .join(",")
       .split(",")
+      .filter(tag => tag !== "")
   );
+  console.log(tags);
   return (
     <div className="tags-container">
       <h1 className="page-header">Tags</h1>
