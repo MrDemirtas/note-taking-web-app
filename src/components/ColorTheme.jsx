@@ -1,11 +1,6 @@
 import { BackArrowSvg, MoonSvg, SunSvg } from "../Svg";
+import { ScreenSize, getSystemThemePref } from "../App";
 import { useContext, useEffect, useState } from "react";
-
-import { ScreenSize } from "../App";
-
-function getSystemThemePref() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
 
 export default function ColorTheme() {
   const screenSize = useContext(ScreenSize);

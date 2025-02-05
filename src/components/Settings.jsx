@@ -1,4 +1,4 @@
-import { FontFamily, ScreenSize } from "../App";
+import { FontFamily, ScreenSize, getSystemThemePref } from "../App";
 import { LockSvg, MoonSvg, RightArrow, SunSvg, TextFieldsSvg } from "../Svg";
 import { useContext, useEffect, useState } from "react";
 
@@ -61,10 +61,6 @@ function SettingsDesktop() {
       </div>
     </div>
   );
-}
-
-function getSystemThemePref() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function ColorTheme() {

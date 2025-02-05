@@ -6,7 +6,11 @@ import MobileMenu from "./components/MobileMenu";
 import { ToastContainer } from "react-toastify";
 import { getPage } from "./helper";
 
-document.body.className = localStorage.theme || "light";
+export function getSystemThemePref() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+document.body.className = localStorage.theme || getSystemThemePref();
 export const NoteData = createContext(null);
 export const ScreenSize = createContext(null);
 export const Router = createContext(null);
