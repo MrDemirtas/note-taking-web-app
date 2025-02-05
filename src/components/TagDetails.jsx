@@ -37,7 +37,7 @@ function TagDetailsMobile({ noteData }) {
       <p className="page-description">All notes with the ”{tag}” tag are shown here.</p>
       <ul className="notes-list">
         {filterData.map((note) => (
-          <Note key={note.id} {...note} />
+          <Note key={note.id} {...note} selectedTag={tag}  />
         ))}
       </ul>
       <button className="add-note-btn" onClick={() => (location.hash = "/new-note")}>
@@ -47,10 +47,10 @@ function TagDetailsMobile({ noteData }) {
   );
 }
 
-function Note({ id, title, tags, lastEdited }) {
+function Note({ id, title, tags, lastEdited, selectedTag }) {
   return (
     <>
-      <li onClick={() => (location.hash = `/note/${id}`)}>
+      <li onClick={() => (location.hash = `/note/tag-details/${selectedTag}/${id}`)}>
         <h3>{title}</h3>
         <div className="note-tags">
           {tags.map((tag) => (

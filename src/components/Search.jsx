@@ -21,7 +21,7 @@ export default function Search() {
     <div className="search-container">
       <h1 className="page-header">Search</h1>
       <input type="text" placeholder="Search..." value={text} onChange={(e) => setText(e.target.value)} />
-      <p className="page-description">All notes matching ”Dev” are displayed below.</p>
+      {text && <p className="page-description">All notes matching ”{text}” are displayed below.</p>}
       <ul className="notes-list">{filterData.length > 0 ? filterData.map((note) => <Note key={note.id} {...note} />) : <EmptyState />}</ul>
       <button className="add-note-btn" onClick={() => (location.hash = "/new-note")}>
         <AddSvg />

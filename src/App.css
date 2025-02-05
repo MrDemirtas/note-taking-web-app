@@ -213,6 +213,7 @@ hr {
   &:disabled {
     background-color: #e0e4ea;
     color: #99a0ae;
+    cursor: default;
   }
 }
 
@@ -260,7 +261,7 @@ hr {
       width: 100%;
       resize: none;
       outline: none;
-      border: 1px solid #cacfd8;
+      border: 1px solid transparent;
       font-size: 12px;
       border-radius: 4px;
       line-height: 14.4px;
@@ -365,6 +366,8 @@ hr {
     display: grid;
     gap: 8px;
     li {
+      padding: 8px;
+      border-radius: 8px;
       &:hover {
         background-color: #f3f5f8;
       }
@@ -626,11 +629,17 @@ dialog {
 .deleteBtn {
   background-color: #fb3748;
   color: #fff;
+  &:hover {
+    background-color: #d63031;
+  }
 }
 
 .archiveBtn {
   background-color: #335cff;
   color: #fff;
+  &:hover{
+    background-color: #1e3a8a;
+  }
 }
 
 .Toastify__toast-container {
@@ -673,6 +682,7 @@ button {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-radius: 6px;
       font-size: 14px;
       font-weight: 500;
       line-height: 16.8px;
@@ -700,10 +710,13 @@ button {
 }
 
 .desktop-menu {
+  margin-top: 16px;
   margin-bottom: 8px;
   ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    gap: 4px;
     li {
       display: flex;
       flex-direction: column;
@@ -775,7 +788,7 @@ button {
 
 .page-container-desktop {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1.3fr 3fr 1.3fr;
   height: calc(100% - 102.4px);
   div {
     height: 100%;

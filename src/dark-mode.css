@@ -1,0 +1,385 @@
+body.dark {
+  background-color: #232530;
+  header {
+    background-color: #232530;
+    h1 {
+      color: #fff;
+    }
+  }
+
+  .container {
+    background-color: #0e121b;
+    color: #fff;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #fff;
+    }
+    span {
+      color: #cacfd8;
+    }
+    hr {
+      border: 1px solid #232530;
+    }
+  }
+
+  .note-tag {
+    background-color: #525866;
+    color: #fff !important;
+  }
+
+  .mobile-menu {
+    background-color: #0e121b;
+    border-top: 1px solid #232530;
+    box-shadow: 0px -5px 6px 0px #00000080;
+  }
+
+  .nav-item {
+    a {
+      svg {
+        fill: #99a0ae;
+      }
+    }
+  }
+
+  .nav-item.active {
+    background-color: #2b303b;
+    a {
+      svg {
+        fill: #335cff;
+      }
+    }
+  }
+
+  .note-header {
+    button {
+      color: #cacfd8;
+      svg {
+        fill: #cacfd8;
+      }
+    }
+  }
+
+  .note-saveBtn {
+    color: #335cff !important;
+  }
+
+  form {
+    input,
+    textarea {
+      background-color: transparent;
+      &:focus {
+        border-color: #99a0ae;
+      }
+    }
+    input {
+      color: #fff;
+    }
+  }
+
+  .note-textarea {
+    color: #f3f5f8;
+  }
+
+  .note-metadata-table {
+    color: #cacfd8;
+    svg {
+      fill: #cacfd8;
+    }
+    input:disabled {
+      color: #cacfd8;
+    }
+  }
+
+  dialog {
+    background-color: #2b303b;
+    border: 1px solid #525866;
+    box-shadow: 0px 28px 22px 0px var(--colorsbaseblack);
+    hr {
+      border: 1px solid #525866 !important;
+    }
+  }
+
+  .dialog-contents {
+    figure {
+      background-color: #525866;
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  .dialog-texts {
+    p {
+      color: #e0e4ea;
+    }
+  }
+
+  .cancelBtn {
+    background-color: #717784;
+    color: #e0e4ea;
+    &:hover {
+      background-color: #525866;
+    }
+  }
+
+  .backBtn {
+    color: #cacfd8;
+    svg {
+      fill: #cacfd8;
+    }
+  }
+
+  .note-cancelBtn {
+    color: #cacfd8;
+  }
+
+  .emptyState {
+    background-color: #232530;
+    border: 1px solid #2b303b;
+    color: #fff;
+  }
+
+  .page-description {
+    color: #e0e4ea;
+  }
+
+  .tag {
+    svg {
+      fill: #cacfd8;
+    }
+    &:hover {
+      background-color: #2b303b;
+    }
+  }
+
+  .tag-title {
+    span {
+      color: #99a0ae;
+    }
+  }
+
+  .search-container {
+    input {
+      border: 1px solid #525866;
+      box-shadow: 0px 1px 2px 0px #0a0d1408;
+      background-color: transparent;
+      color: #fff;
+    }
+  }
+
+  .settings-container {
+    ul {
+      li {
+        a {
+          color: #fff;
+          svg {
+            fill: #fff;
+          }
+        }
+        &:hover {
+          background-color: #2b303b;
+        }
+      }
+    }
+  }
+
+  .radio-group {
+    label {
+      background-color: transparent;
+      border: 1px solid #232530;
+      figure {
+        background-color: #0e121b;
+        border: 1px solid #2b303b;
+        svg {
+          fill: #fff;
+        }
+        img {
+          filter: invert(100%) sepia(4%) saturate(18%) hue-rotate(172deg) brightness(106%) contrast(106%);
+        }
+      }
+      &:hover{
+        background-color: #2b303b;
+      }
+    }
+  }
+
+  .radio-group {
+    label:has(input:checked) {
+      background-color: #232530;
+    }
+  }
+
+  .theme-description {
+    p {
+      color: #cacfd8;
+    }
+  }
+
+  .notes-list {
+    li.active {
+      background-color: #232530;
+    }
+    li:hover {
+      background-color: #2b303b;
+    }
+  }
+
+  .desktop-menu {
+    ul {
+      li {
+        a {
+          color: #fff;
+          svg {
+            fill: #fff;
+          }
+        }
+        &:hover {
+          background-color: #2b303b;
+        }
+        &.active {
+          background-color: #232530;
+          a {
+            div {
+              svg {
+                fill: #335cff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .desktop-menu-tags {
+    h2 {
+      color: #717784;
+    }
+  }
+
+  .desktop-menu-tags {
+    ul {
+      li {
+        color: #fff;
+        svg {
+          fill: #fff;
+        }
+        &:hover {
+          background-color: #2b303b;
+        }
+        &.active {
+          background-color: #232530;
+          div {
+            svg {
+              fill: #335cff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .desktop-menu-container {
+    border-right: 1px solid #232530;
+  }
+
+  .page-header-desktop-right {
+    input {
+      background-color: transparent;
+      color: #fff;
+      box-shadow: 0px 1px 2px 0px #0a0d1408;
+      border: 1px solid #525866;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2399A0AE' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+    }
+    button {
+      svg {
+        fill: #99a0ae;
+      }
+    }
+  }
+
+  .page-header-desktop {
+    border-bottom: 1px solid #232530;
+  }
+
+  .page-left {
+    border-right: 1px solid #232530;
+    p {
+      color: #e0e4ea;
+    }
+  }
+
+  .page-contents {
+    border-right: 1px solid #232530;
+  }
+
+  .note-cancelBtnDesktop {
+    background-color: #232530;
+    color: #99a0ae;
+    &:hover {
+      background-color: #2b303b;
+    }
+  }
+
+  .note-saveBtnDesktop:disabled {
+    background-color: #525866;
+  }
+
+  .note-actions {
+    button {
+      border: 1px solid #525866;
+      color: #fff;
+      svg {
+        fill: #fff;
+      }
+      &:hover {
+        background-color: #2b303b;
+      }
+    }
+  }
+
+  .settings-left-menu {
+    border-right: 1px solid #232530;
+    ul {
+      li {
+        svg {
+          fill: #fff;
+        }
+        &:hover {
+          background-color: #2b303b;
+        }
+        &.active {
+          background-color: #232530;
+          div {
+            svg {
+              fill: #335cff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body.dark {
+    .mobile-menu {
+      ul {
+        li {
+          border-right: 1px solid #232530;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  body.dark {
+    header {
+      background-color: transparent;
+    }
+  }
+}

@@ -23,7 +23,7 @@ export default function NewNote() {
         .map((tag) => tag.trim())
         .filter((tag) => tag !== ""),
       isArchived: false,
-      lastEdited: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+      lastEdited: new Date().toLocaleString(),
       note: formObj.note,
     };
     setNoteData([newNoteObj, ...noteData]);

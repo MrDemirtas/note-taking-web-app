@@ -35,7 +35,7 @@ export default function Note() {
       .split(",")
       .map((tag) => tag.trim())
       .filter((tag) => tag !== "");
-    currentNote.lastEdited = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    currentNote.lastEdited = new Date().toLocaleString();
     noteData[noteData.findIndex((note) => note.id === currentNote.id)] = currentNote;
     setNoteData([...noteData]);
     toast.success("Note updated.");
@@ -63,7 +63,9 @@ export default function Note() {
   function handleBack() {
     if (location.hash.substring(1).split("/").includes("archive")) {
       location.hash = "/archive";
-    }else{
+    }else if (location.hash.substring(1).split("/").includes("tag-details")) {
+      location.hash = "/tag-details/" + location.hash.substring(1).split("/").at(-2);
+    } else{
       location.hash = "/";
     }
   }
