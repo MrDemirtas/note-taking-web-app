@@ -24,7 +24,7 @@ export default function DesktopMenu() {
             <a href="#/">
               <div>
                 <HomeSvg />
-                Home
+                All Notes
               </div>
               {route === "/" && <RightArrow />}
             </a>
@@ -33,7 +33,7 @@ export default function DesktopMenu() {
             <a href="#/archive">
               <div>
                 <ArchiveSvg />
-                Archive
+                Archived Notes
               </div>
               {route === "archive" && <RightArrow />}
             </a>
@@ -44,7 +44,15 @@ export default function DesktopMenu() {
       <div className="desktop-menu-tags">
         <h2>Tags</h2>
         <ul>
-          {Array.from(tags).map(tag => <li key={tag}><TagsSvg />{tag}</li>)}
+          {Array.from(tags).map((tag) => (
+            <li key={tag} className={location.hash.substring(1) === `/tag-details/${tag}` ? "active" : ""} onClick={() => (location.hash = `/tag-details/${tag}`)}>
+              <div>
+                <TagsSvg />
+                {tag}
+              </div>
+              {location.hash.substring(1) === `/tag-details/${tag}` && <RightArrow />}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -1,10 +1,15 @@
 import { AddSvg, TagsSvg } from "../Svg";
+import { NoteData, ScreenSize } from "../App";
 
-import { NoteData } from "../App";
 import { useContext } from "react";
 
 export default function Tags() {
   const { noteData } = useContext(NoteData);
+  const screenSize = useContext(ScreenSize);
+  if (screenSize  >= 1440) {
+    location.hash = "/";
+  }
+  
   const tags = new Set(
     noteData
       .map((note) => note.tags.map((tag) => tag))

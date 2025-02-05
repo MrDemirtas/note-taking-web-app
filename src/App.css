@@ -61,8 +61,8 @@ h6 {
       letter-spacing: -0.30000001192092896px;
     }
   }
-  li.active{
-    background-color: #F3F5F8;
+  li.active {
+    background-color: #f3f5f8;
   }
 }
 
@@ -187,13 +187,13 @@ hr {
   color: #335cff;
 }
 
-.new-note-form-btn-group{
+.new-note-form-btn-group {
   display: flex;
   gap: 16px;
 }
 
 .note-saveBtnDesktop,
-.note-cancelBtnDesktop{
+.note-cancelBtnDesktop {
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -204,18 +204,24 @@ hr {
   cursor: pointer;
 }
 
-.note-saveBtnDesktop{
+.note-saveBtnDesktop {
   background-color: #335cff;
   color: #fff;
-  &:disabled{
+  &:hover {
+    background-color: #1e3a8a;
+  }
+  &:disabled {
     background-color: #e0e4ea;
     color: #99a0ae;
   }
 }
 
-.note-cancelBtnDesktop{
+.note-cancelBtnDesktop {
   background-color: #f3f5f8;
   color: #525866;
+  &:hover {
+    background-color: #e0e4ea;
+  }
 }
 
 .note-metadata {
@@ -528,10 +534,6 @@ hr {
   }
 }
 
-.note-textarea.desktop{
-  
-}
-
 .emptyState {
   padding: 8px;
   color: #0e121b;
@@ -670,15 +672,28 @@ button {
       padding: 10px 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
       font-size: 14px;
       font-weight: 500;
       line-height: 16.8px;
       letter-spacing: -0.20000000298023224px;
       color: #2b303b;
       cursor: pointer;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
       &:hover {
         background-color: #f3f5f8;
+      }
+      &.active {
+        background-color: #f3f5f8;
+        div {
+          svg {
+            fill: #335cff;
+          }
+        }
       }
     }
   }
@@ -712,13 +727,16 @@ button {
           gap: 8px;
         }
       }
-    }
-    li.active {
-      background-color: #f3f5f8;
-      a {
-        div {
-          svg {
-            fill: #335cff;
+      &:hover {
+        background-color: #f3f5f8;
+      }
+      &.active {
+        background-color: #f3f5f8;
+        a {
+          div {
+            svg {
+              fill: #335cff;
+            }
           }
         }
       }
@@ -747,7 +765,7 @@ button {
     background-repeat: no-repeat;
     background-position: 16px center;
     background-size: 20px;
-    width: 300px;
+    width: 400px;
   }
   button {
     background-color: transparent;
@@ -757,7 +775,7 @@ button {
 
 .page-container-desktop {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   height: calc(100% - 102.4px);
   div {
     height: 100%;
@@ -780,6 +798,17 @@ button {
     background-color: #335cff;
     border: none;
     border-radius: 8px;
+    &:hover {
+      background-color: #1e3a8a;
+    }
+  }
+  p {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    letter-spacing: -0.20000000298023224px;
+    color: #2b303b;
   }
 }
 
@@ -810,12 +839,12 @@ button {
   border-radius: 8px;
 }
 
-.note-actions{
+.note-actions {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  button{
+  button {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -828,8 +857,51 @@ button {
     border: none;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #CACFD8;
+    border: 1px solid #cacfd8;
+    &:hover {
+      background-color: #f3f5f8;
+    }
   }
+}
+
+.settings-desktop-contents{
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 2fr;
+  height: calc(100% - 100.8px);
+}
+
+.settings-left-menu{
+  padding: 20px;
+  border-right: 1px solid #e0e4ea;
+  ul{
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    li{
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      div{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      &:hover{
+        background-color: #f3f5f8;
+      }
+      &.active{
+        background-color: #f3f5f8;
+      }
+    }
+  }
+}
+
+.settings-desktop-main{
+  padding: 32px; 
 }
 
 @media screen and (min-width: 768px) {
@@ -867,6 +939,14 @@ button {
   .container {
     padding: 0 16px;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
+  }
+
+  .tag-title {
+    padding-block: 0;
+  }
+
+  .page-description {
+    margin-top: 4px;
   }
 }

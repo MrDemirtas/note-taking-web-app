@@ -1,11 +1,14 @@
 import { BackArrowSvg, TagsSvg, TimeSvg } from "../Svg";
+import { NoteData, ScreenSize } from "../App";
 import { useContext, useRef, useState } from "react";
 
-import { NoteData } from "../App";
-
 export default function NewNote() {
+  const screenSize = useContext(ScreenSize);
+  if (screenSize >= 1440) {
+    location.hash = "/";
+  }
   const formRef = useRef(null);
-  const {noteData, setNoteData} = useContext(NoteData);
+  const { noteData, setNoteData } = useContext(NoteData);
   const [tagsText, setTagsText] = useState("");
 
   function handleSubmit(e) {
@@ -21,10 +24,10 @@ export default function NewNote() {
         .filter((tag) => tag !== ""),
       isArchived: false,
       lastEdited: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
-      note: formObj.note
+      note: formObj.note,
     };
     setNoteData([newNoteObj, ...noteData]);
-    location.hash = `/note/${id}`
+    location.hash = `/note/${id}`;
   }
 
   return (
@@ -35,7 +38,9 @@ export default function NewNote() {
           Go Back
         </button>
         <div className="new-note-interactions">
-          <button className="note-cancelBtn" onClick={() => history.back()}>Cancel</button>
+          <button className="note-cancelBtn" onClick={() => history.back()}>
+            Cancel
+          </button>
           <button className="note-saveBtn" onClick={() => formRef.current.requestSubmit()}>
             Save Note
           </button>

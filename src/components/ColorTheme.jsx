@@ -1,18 +1,24 @@
 import { BackArrowSvg, MoonSvg, SunSvg } from "../Svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { ScreenSize } from "../App";
 
 function getSystemThemePref() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function ColorTheme() {
+  const screenSize = useContext(ScreenSize);
+  if (screenSize >= 1440) {
+    location.hash = "/settings";
+  }
+  
   const [theme, setTheme] = useState(localStorage.theme || getSystemThemePref());
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
 
   function handleChange(e) {
-    console.log(e.target.value);
     const changedTheme = e.target.value === "dark" ? "dark" : "light";
     setTheme(changedTheme);
     localStorage.theme = changedTheme;

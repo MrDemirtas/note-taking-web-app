@@ -1,30 +1,28 @@
 import { ArchiveSvg, BackArrowSvg, RestoreSvg, StatusSvg, TagsSvg, TimeSvg, TrashSvg } from "../Svg";
-import { NoteData, Router } from "../App";
+import { NoteData, Router, ScreenSize } from "../App";
 import { useContext, useEffect, useRef, useState } from "react";
 
 import { toast } from "react-toastify";
 
-const successToastOpt = {
-  position: "bottom-right",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: "colored",
-};
 export default function Note() {
   const formRef = useRef(null);
   const deleteDialogRef = useRef(null);
   const archiveDialogRef = useRef(null);
   const { noteData, setNoteData } = useContext(NoteData);
+  const screenSize = useContext(ScreenSize);
   const router = useContext(Router);
   const id = location.hash.split("/").at(-1);
   const [currentNote, setCurrentNote] = useState(noteData.find((note) => note.id === id));
   if (!currentNote) {
     location.hash = "/not-found";
     return;
+  }
+  if (screenSize >= 1440) {
+    if (location.hash.substring(1).split("/").at(-2) === "archive") {
+      location.hash = `/archive/${id}`;
+    }else{
+      location.hash = id;
+    }
   }
   const [tagsText, setTagsText] = useState(currentNote.tags.join(", "));
 
@@ -40,13 +38,13 @@ export default function Note() {
     currentNote.lastEdited = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
     noteData[noteData.findIndex((note) => note.id === currentNote.id)] = currentNote;
     setNoteData([...noteData]);
-    toast.success("Note updated.", successToastOpt);
+    toast.success("Note updated.");
   }
 
   function handleDelete() {
     setNoteData(noteData.filter((note) => note.id !== id));
     location.hash = "/";
-    toast.success("Note deleted.", successToastOpt);
+    toast.success("Note deleted.");
   }
 
   function handleCancel() {
@@ -59,7 +57,15 @@ export default function Note() {
     noteData[noteData.findIndex((note) => note.id === currentNote.id)].isArchived = status;
     setNoteData([...noteData]);
     archiveDialogRef.current.close();
-    toast.success(status ? "Note archived." : "Note removed from archive.", successToastOpt);
+    toast.success(status ? "Note archived." : "Note removed from archive.");
+  }
+
+  function handleBack() {
+    if (location.hash.substring(1).split("/").includes("archive")) {
+      location.hash = "/archive";
+    }else{
+      location.hash = "/";
+    }
   }
 
   return (
@@ -67,7 +73,7 @@ export default function Note() {
       <DeleteModal deleteDialogRef={deleteDialogRef} handleDelete={handleDelete} />
       <ArchiveModal archiveDialogRef={archiveDialogRef} handleArchive={handleArchive} />
       <div className="note-header">
-        <button onClick={() => history.back()}>
+        <button onClick={handleBack}>
           <BackArrowSvg />
           Go Back
         </button>

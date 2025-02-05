@@ -1,7 +1,8 @@
 import { AddSvg, ArchiveSvg, RestoreSvg, SettingsSvg, StatusSvg, TagsSvg, TimeSvg, TrashSvg } from "../Svg";
-import { NoteData, ScreenSize } from "../App";
+import { NoteData, Router, ScreenSize } from "../App";
 import { useContext, useEffect, useRef, useState } from "react";
 
+import DesktopHeader from "./DesktopHeader";
 import { toast } from "react-toastify";
 
 export default function AllNotes() {
@@ -12,6 +13,11 @@ export default function AllNotes() {
 }
 
 function AllNotesMobile({ noteData }) {
+  const id = location.hash.substring(1);
+  const note = noteData.find((note) => note.id === id);
+  if (note) {
+    location.hash = `/note/${note.id}`;
+  }
   return (
     <main>
       <h1 className="page-header">All Notes</h1>
@@ -49,14 +55,27 @@ function EmptyState() {
 function AllNotesDesktop({ noteData, setNoteData }) {
   const archiveDialogRef = useRef(null);
   const deleteDialogRef = useRef(null);
-  const [selectedNote, setSelectedNote] = useState(null);
+  const router = useContext(Router);
+  const [selectedNote, setSelectedNote] = useState(noteData.find((note) => note.id === location.hash.substring(1)) || null);
   const [currentContent, setCurrentContent] = useState(<NewNoteDesktop setSelectedNote={setSelectedNote} />);
+  const [filterText, setFilterText] = useState("");
+  const [filterData, setFilterData] = useState([...noteData]);
+
+  useEffect(() => {
+    setFilterData(noteData.filter((note) => note.title.toLowerCase().includes(filterText.trim().toLowerCase()) || note.note.toLowerCase().includes(filterText.trim().toLowerCase()) || note.tags.map((tag) => tag.toLowerCase().includes(filterText.trim().toLowerCase())).includes(true)));
+  }, [filterText, noteData]);
+
+  useEffect(() => {
+    setSelectedNote(noteData.find((note) => note.id === location.hash.substring(1).split("/").at(-1)) || null);
+  }, [router]);
 
   useEffect(() => {
     if (selectedNote) {
       setCurrentContent(<NoteDesktop note={selectedNote} noteData={noteData} setNoteData={setNoteData} setCurrentContent={setCurrentContent} setSelectedNote={setSelectedNote} />);
+      location.hash = `${selectedNote.id}`;
     } else {
       setCurrentContent(<NewNoteDesktop setSelectedNote={setSelectedNote} />);
+      location.hash = "/";
     }
   }, [selectedNote]);
 
@@ -70,28 +89,20 @@ function AllNotesDesktop({ noteData, setNoteData }) {
   function handleArchive(status) {
     selectedNote.isArchived = status;
     setNoteData([...noteData]);
-    setSelectedNote({...selectedNote});
+    setSelectedNote({ ...selectedNote });
     archiveDialogRef.current.close();
     toast.success(status ? "Note archived." : "Note restored from archive.");
   }
 
   return (
     <main>
-      <div className="page-header-desktop">
-        <h1>All Notes</h1>
-        <div className="page-header-desktop-right">
-          <input type="text" placeholder="Search by title, content, or tags…" />
-          <button>
-            <SettingsSvg />
-          </button>
-        </div>
-      </div>
+      <DesktopHeader title="All Notes" filterText={filterText} setFilterText={setFilterText} />
       <div className="page-container-desktop">
         <div className="page-left">
           <button onClick={() => setSelectedNote(null)}>+ Create New Note</button>
           <ul className="notes-list">
-            {noteData.length > 0 ? (
-              noteData.map((note) => (
+            {filterData.length > 0 ? (
+              filterData.map((note) => (
                 <li className={selectedNote?.id === note.id ? "active" : ""} key={note.id} onClick={() => setSelectedNote(note)}>
                   <h3>{note.title}</h3>
                   <div className="note-tags">

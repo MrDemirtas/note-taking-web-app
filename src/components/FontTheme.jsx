@@ -1,10 +1,16 @@
+import { FontFamily, ScreenSize } from "../App";
+
 import { BackArrowSvg } from "../Svg";
-import { FontFamily } from "../App";
 import { useContext } from "react";
 
 export default function FontTheme() {
-  const { fontFamily, setFontFamily } = useContext(FontFamily);
+  const screenSize = useContext(ScreenSize);
+  if (screenSize >= 1440) {
+    location.hash = "/settings";
+  }
   
+  const { fontFamily, setFontFamily } = useContext(FontFamily);
+
   function handleSubmit(e) {
     const formData = new FormData(e.target);
     const formObj = Object.fromEntries(formData);
