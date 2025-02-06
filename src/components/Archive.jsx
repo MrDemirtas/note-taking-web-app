@@ -93,7 +93,7 @@ function ArchiveDesktop({ noteData, setNoteData }) {
   }
 
   function handleArchive() {
-    selectedNote.isArchived = false;
+    noteData.find(note => note.id === selectedNote.id).isArchived = false;
     setNoteData([...noteData]);
     setSelectedNote(null);
     toast.success("Note restored from archive.");
