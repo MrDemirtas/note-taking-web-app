@@ -286,7 +286,7 @@ function NoteDesktop({ note, noteData, setNoteData, setCurrentContent, setSelect
         </tbody>
       </table>
       <hr />
-      <textarea required className="note-textarea" rows={40} placeholder="Start typing your note here…" value={currentNote.note} onChange={(e) => setCurrentNote({ ...currentNote, note: e.target.value })} />
+      <textarea required className="note-textarea" placeholder="Start typing your note here…" value={currentNote.note} onChange={(e) => setCurrentNote({ ...currentNote, note: e.target.value })} />
       <hr />
       <div className="new-note-form-btn-group">
         <button type="submit" disabled={currentNote.title === note.title && tagsText === note.tags.join(", ") && currentNote.note === note.note} className="note-saveBtnDesktop">
